@@ -10,12 +10,11 @@ const postsSlice = createSlice({
     name: "posts",
     initialState: {
         postData: [],
-        postDetail: [],
         status: "idle",
     },
     reducers: {
-        setPostDetail: (state, action) => {
-            state.postDetail = action.payload;
+        refresh: (state, action) => {
+            state.postData = action.payload;
         },
 
         updateBody: (state, action) => {
@@ -25,6 +24,13 @@ const postsSlice = createSlice({
                 post.body = body;
             }
         },
+
+        deletePost: (state, action) => {
+            const id = action.payload;
+            state.postData = state.postData.filter(post => post.id !== id);
+            localStorage.setItem("posts", JSON.stringify(state.postData));
+        },
+
     },
     extraReducers: (builder) => {
         builder.addCase(fetchPosts.pending, (state) => {
@@ -42,4 +48,9 @@ const postsSlice = createSlice({
 });
 
 export default postsSlice.reducer;
-export const {setPostDetail, updateBody} = postsSlice.actions;
+export const { deletePost, updateBody, refresh } = postsSlice.actions;
+//    postDetail: [],
+
+/* setPostDetail: (state, action) => {
+        state.postDetail = action.payload;
+    },*/

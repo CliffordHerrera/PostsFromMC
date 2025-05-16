@@ -12,6 +12,7 @@ node_modules
 bower_components
 build
 Reduch
+src/backup
 
 *.sublime*
 

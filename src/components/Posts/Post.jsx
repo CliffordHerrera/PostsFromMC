@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { setPostDetail, updateBody } from "../../Redux/slices/postSlice";
+import { deletePost, updateBody } from "../../Redux/slices/postSlice";
 
 export const Post = () => {
     const { postId } = useParams();
@@ -13,6 +13,11 @@ export const Post = () => {
     const handleEdit = () => {
         dispatch(updateBody({ id: post.id, body: newBody }));
         localStorage.setItem('posts', JSON.stringify(postData));
+    }
+
+    const handleDelete = () => {
+        dispatch(deletePost(post.id));
+        navigate('/posts');
     }
 
     return (
@@ -42,7 +47,11 @@ export const Post = () => {
                 Save Edited Body
             </button>
 
-            <p className="mt-4 text-sm text-white bg-black p-2 rounded">Current Body: {post.body}</p>
+            <button onClick={handleDelete} className="bg-red-500 px-4 py-1 rounded mt-2 hover:bg-red-600">Delete</button>
+
+            
         </div>
     )
 }
+
+//<p className="mt-4 text-sm text-white bg-black p-2 rounded">Current Body: {post.body}</p>

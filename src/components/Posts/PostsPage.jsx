@@ -26,7 +26,7 @@ export default function PostsPage() {
     
 
     return (
-        <div className="bg-gradient-to-br from-slate-600 to-purple-950 flex flex-col items-center justify-evenly w-full">
+        <div className="bg-gradient-to-br from-slate-600 to-purple-950 flex flex-col items-center justify-evenly w-full rounded-2xl">
             <h2 className="text-white font-extrabold">Posts</h2>
             <button onClick={refresh} className="bg-blue-300 hover:bg-blue-500 border-black rounded m-3">Refresh</button>
             {status === 'loading' && <Loader />}

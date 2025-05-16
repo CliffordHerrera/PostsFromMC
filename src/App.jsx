@@ -11,11 +11,11 @@ export default function App() {
         <div className="p-4">
             <h1 className="text-2xl font-bold mb-4">My App</h1>
 
-            <nav className="p-5 flex flex-row justify-evenly bg-orange-300 rounded m-3">
-                <Link to="/">Home</Link>
-                <Link to="/auth">Authentify</Link>
-                <Link to="/register">Register</Link>
-                <Link to="/posts">Posts</Link>
+            <nav className="p-5 flex flex-row justify-evenly bg-orange-300 rounded m-3 hover:bg-orange-400">
+                <Link className="hover:text-white" to="/">Home</Link>
+                <Link className="hover:text-white" to="/auth">Authentify</Link>
+                <Link className="hover:text-white" to="/register">Register</Link>
+                <Link className="hover:text-white" to="/posts">Posts</Link>
             </nav>
 
             <Routes>
